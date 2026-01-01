@@ -66,15 +66,26 @@ export default defineConfig(({ mode }) => {
 	}
 
 	const pkg = getPkg()
+
+	// kilocode_change start
+	let branding: any = {}
+	try {
+		const brandingPath = path.join(__dirname, "..", "rebranding", "branding.json")
+		if (fs.existsSync(brandingPath)) {
+			branding = JSON.parse(fs.readFileSync(brandingPath, "utf8"))
+		}
+	} catch (error) {
+		console.warn("Could not read rebranding/branding.json", error)
+	}
 	// kilocode_change end
 	const gitSha = getGitSha()
 
 	const define: Record<string, any> = {
 		"process.platform": JSON.stringify(process.platform),
 		"process.env.VSCODE_TEXTMATE_DEBUG": JSON.stringify(process.env.VSCODE_TEXTMATE_DEBUG),
-		"process.env.PKG_NAME": JSON.stringify(pkg.name),
+		"process.env.PKG_NAME": JSON.stringify(branding.name || pkg.name),
 		"process.env.PKG_VERSION": JSON.stringify(pkg.version),
-		"process.env.PKG_OUTPUT_CHANNEL": JSON.stringify("Kilo-Code"),
+		"process.env.PKG_OUTPUT_CHANNEL": JSON.stringify(branding.outputChannelName || "Kilo-Code"),
 		...(gitSha ? { "process.env.PKG_SHA": JSON.stringify(gitSha) } : {}),
 	}
 

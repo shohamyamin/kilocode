@@ -1,0 +1,20 @@
+{
+	"name": "jack-code",
+	"displayName": "Jack Code",
+	"shortName": "Jack",
+	"publisher": "jackcode",
+	"description": "Your AI Coding Assistant",
+	"outputChannelName": "Jack-Code",
+	"repository": "https://github.com/Kilo-Org/kilocode",
+	"homepage": "https://kilo.ai",
+	"files": {
+		"package": "src/package.json",
+		"nls": "src/package.nls.json"
+	},
+	"icons": {
+		"logo-outline-black.png": "rebranding/icons/logo-outline-black.png",
+		"kilo.png": "rebranding/icons/kilo.png",
+		"kilo-dark.png": "rebranding/icons/kilo-dark.png",
+		"icon.png": "rebranding/icons/icon.png"
+	}
+}
