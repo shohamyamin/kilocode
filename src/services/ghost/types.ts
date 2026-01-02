@@ -17,6 +17,7 @@ export const AUTOCOMPLETE_PROVIDER_MODELS = new Map([
 	["openrouter", "mistralai/codestral-2508"],
 	["requesty", "mistral/codestral-latest"],
 	["bedrock", "mistral.codestral-2508-v1:0"],
+	["openai", "mistralai/devstral-2512:free"],
 ] as const)
 
 export type AutocompleteProviderKey = typeof AUTOCOMPLETE_PROVIDER_MODELS extends Map<infer K, any> ? K : never

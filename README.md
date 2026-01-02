@@ -46,6 +46,21 @@
 
 For details on building and developing the extension, see [DEVELOPMENT.md](/DEVELOPMENT.md)
 
+## Rebranding
+
+You can rebrand the extension (change name, display name, icons, etc.) using the configuration in `rebranding/branding.json`.
+
+1.  **Configure:** Edit `rebranding/branding.json` with your desired settings (Name, Publisher, Icons, etc.).
+2.  **Apply:** Run the rebranding script:
+    ```bash
+    npx tsx rebranding/apply-branding.ts
+    ```
+    This script updates `package.json`, `package.nls.json`, copies icons, and updates localization files.
+3.  **Build:** Build the extension as usual:
+    ```bash
+    pnpm vsix
+    ```
+
 ## Contributing
 
 Contributions are welcome, and they are greatly appreciated! Get started by reading our [Contributing Guide](CONTRIBUTING.md). Or join our [Discord](https://discord.gg/kilocode) to chat with the team and community.

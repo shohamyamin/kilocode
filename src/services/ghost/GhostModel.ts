@@ -62,7 +62,11 @@ export class GhostModel {
 				if (!profile.kilocodeToken) continue
 				if (!(await checkKilocodeBalance(profile.kilocodeToken, profile.kilocodeOrganizationId))) continue
 			}
-			await useProfile(this, { ...profile, [modelIdKeysByProvider[provider]]: model }, provider)
+			const modelKey =
+				provider === "openai"
+					? "openAiModelId"
+					: modelIdKeysByProvider[provider as keyof typeof modelIdKeysByProvider]
+			await useProfile(this, { ...profile, [modelKey]: model }, provider)
 			return true
 		}
 
