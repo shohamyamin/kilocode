@@ -1,5 +1,5 @@
 // kilocode_change new file
-import { modelIdKeysByProvider, ProviderName } from "@roo-code/types"
+import { isTypicalProvider, modelIdKeysByProvider, ProviderName } from "@roo-code/types"
 import { ApiHandler, buildApiHandler, FimHandler } from "../../api"
 import { ProviderSettingsManager } from "../../core/config/ProviderSettingsManager"
 import { OpenRouterHandler } from "../../api/providers"
@@ -77,7 +77,12 @@ export class AutocompleteModel {
 					continue
 				}
 			}
-			await useProfile(this, { ...profile, [modelIdKeysByProvider[provider]]: model }, provider)
+			const modelKey = isTypicalProvider(provider)
+				? modelIdKeysByProvider[provider]
+				: provider === "openai"
+					? "openAiModelId"
+					: undefined
+			await useProfile(this, modelKey ? { ...profile, [modelKey]: model } : profile, provider)
 			return true
 		}
 

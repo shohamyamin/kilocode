@@ -34,6 +34,7 @@ export const AUTOCOMPLETE_PROVIDER_MODELS = new Map([
 	["litellm", "codestral/codestral-latest"],
 	["lmstudio", "mistralai/codestral-22b-v0.1"],
 	["ollama", "codestral:latest"],
+	["openai", "jack-auto"],
 ] as const)
 
 export type AutocompleteProviderKey = typeof AUTOCOMPLETE_PROVIDER_MODELS extends Map<infer K, unknown> ? K : never
